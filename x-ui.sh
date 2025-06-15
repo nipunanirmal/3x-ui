@@ -1051,7 +1051,7 @@ ssl_cert_issue() {
     LOGI "Will use port: ${WebPort} to issue certificates. Please make sure this port is open."
 
     # issue the certificate
-    ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+    ~/.acme.sh/acme.sh --set-default-ca --server zerossl
     ~/.acme.sh/acme.sh --issue -d ${domain} --listen-v6 --standalone --httpport ${WebPort} --force
     if [ $? -ne 0 ]; then
         LOGE "Issuing certificate failed, please check logs."
@@ -1176,7 +1176,7 @@ ssl_cert_issue_CF() {
         LOGD "Your registered email address is: ${CF_AccountEmail}"
 
         # Set the default CA to Let's Encrypt
-        ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+        ~/.acme.sh/acme.sh --set-default-ca --server zerossl
         if [ $? -ne 0 ]; then
             LOGE "Default CA, Let'sEncrypt fail, script exiting..."
             exit 1
